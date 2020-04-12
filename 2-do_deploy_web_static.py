@@ -7,6 +7,8 @@ from fabric.operations import local, put, run
 from datetime import datetime as d
 from fabric.api import *
 
+env.hosts = ['34.74.120.150', '54.173.196.75']
+
 
 def do_pack():
     """ generates a .tgz archive """
@@ -22,7 +24,6 @@ def do_pack():
 
 def do_deploy(archive_path):
     """ uploads the archive to servers """
-    env.hosts = ['34.74.120.150', '54.173.196.75']
     destination = "/tmp/" + archive_path.split("/")[-1]
     result = put(archive_path, "/tmp/")
     if result.failed:
