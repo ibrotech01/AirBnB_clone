@@ -12,7 +12,7 @@ def do_pack():
     name = "versions/web_static_" + str(d.now().year)
     name += str(d.now().month) + str(d.now().day) + str(d.now().hour)
     name += str(d.now().minute) + str(d.now().second) + ".tgz"
-    result = local("mkdir -p versions; tar -xvzf \"%s\" web_static/" % name)
+    result = local("mkdir -p versions; tar -cvzf \"%s\" web_static" % name)
     if result.failed:
         return NULL
     else:
