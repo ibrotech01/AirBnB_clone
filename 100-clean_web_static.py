@@ -8,6 +8,7 @@ from datetime import datetime as d
 from fabric.api import *
 
 env.hosts = ['34.74.120.150', '54.173.196.75']
+created_archive = None
 
 
 def do_pack():
@@ -59,10 +60,16 @@ def do_deploy(archive_path):
 
 def deploy():
     """ creates an archive and uploads it to servers"""
-    name = do_pack()
-    if name is None:
-        return False
-    return do_deploy(name)
+    global created_archive
+    if created_archive is None:
+        name = do_pack()
+        if name is None:
+            return False
+        else:
+            created_archive = name
+        return do_deploy(name)
+    else:
+        return do_deploy(created_archive)
 
 
 def do_clean(number=0):
