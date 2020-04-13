@@ -73,5 +73,4 @@ def do_clean(number=0):
     n += 1
     local("ls versions/*.tgz -A1t | tail -n +%d | xargs rm" % n)
     with cd('/data/web_static/releases/'):
-        n += 1
-        run("ls -t1 | grep '^web_static' | tail -n %d | xargs rm -rf" % n)
+        run("ls -t1 | grep '^web_static' | tail -n +%d | xargs rm -rf" % n)
