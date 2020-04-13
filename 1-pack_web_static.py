@@ -14,6 +14,6 @@ def do_pack():
     name += str(d.now().minute) + str(d.now().second) + ".tgz"
     result = local("mkdir -p versions; tar -cvzf \"%s\" web_static" % name)
     if result.failed:
-        return NULL
+        return None
     else:
         return name
