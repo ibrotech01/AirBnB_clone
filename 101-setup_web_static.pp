@@ -39,6 +39,8 @@ provider => 'shell',
 }
 
 exec {'symlink':
+path     => ['/usr/bin', '/bin'],
+command  => 'sudo ln -sf /data/web_static/releases/test/ /data/web_static/current',
 provider => 'shell',
 }
 
