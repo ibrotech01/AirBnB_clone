@@ -34,6 +34,12 @@ ensure => 'directory',
 
 exec {'html file':
 path     => ['/usr/bin', '/bin'],
+command  => 'sudo touch /data/web_static/releases/test/index.html',
+provider => 'shell',
+}
+
+exec {'write html':
+path     => ['/usr/bin', '/bin'],
 command  => 'sudo echo  "Holberton School" > /data/web_static/releases/test/index.html',
 provider => 'shell',
 }
