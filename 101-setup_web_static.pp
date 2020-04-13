@@ -50,9 +50,9 @@ provider => 'shell',
 
 exec {'config':
 path     => ['/usr/bin', '/bin'],
-command  => 'myc="\n\tlocation \/hbnb_static\/ {\n\t\talias'\
-            '\/data\/web_static\/current\/\;\n\t}\n"; st="server {";'\
-            'sudo sed -i "s/^$st/$st$myc/" /etc/nginx/sites-enabled/default',
+# lint:ignore:140chars
+command  => 'myc="\n\tlocation \/hbnb_static\/ {\n\t\talias \/data\/web_static\/current\/\;\n\t}\n"; st="server {"; sudo sed -i "s/^$st/$st$myc/" /etc/nginx/sites-enabled/default',
+# lint:endignore
 provider => 'shell',
 }
 
