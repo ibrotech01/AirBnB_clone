@@ -17,17 +17,17 @@ def remove_session(exception):
 def render_states():
     """ displays all states """
     States = storage.all(State).values()
-    return render_template("9-states.html", States=States)
+    return render_template("9-states.html", States=States, one=None)
 
 
 @app.route('/states/<string:id>', strict_slashes=False)
 def render_one_state(id):
     """ displays one state if it exists """
     key = "State." + id
-    States = []
+    one = None
     if key in storage.all(State):
-        States.append(storage.all(State)[key])
-    return render_template("9-states.html", States=States)
+        one = storage.all(State)[key]
+    return render_template("9-states.html", States=None, one=one)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

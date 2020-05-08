@@ -4,14 +4,14 @@
         <TITLE>HBNB</TITLE>
     </HEAD>
     <BODY>
-        {% if States is not none and States|length > 1 %}
+        {% if States is not none %}
             <H1>States</H1>
             <UL>
                 {% for state in States|sort(attribute='name') %}
                 <LI>{{ state.id }}: <B>{{ state.name }}</B></LI>
                 {% endfor %}
             </UL>
-        {% elif States is not none and States|length == 1 %}
+        {% elif one is not none %}
         {% for state in States %}
         <H1>State: {{ state.name }}</H1>
         <H3>Cities:</H3>
